@@ -11,16 +11,18 @@ from signal import SIGINT
 from hikari import GatewayBot
 from hikari.events import DMMessageCreateEvent
 
-config = toml.load("settings.toml")
+config = toml.load('settings.toml')
 
-bot = GatewayBot(token=config.get('discord', 'token'))
+print(config)
 
-OPERATOR = [ int(op) for op in config.get('discord', 'operators').split(' ') ]
-OWNER = [ int(ow) for ow in config.get('discord', 'owners').split(' ') ]
+bot = GatewayBot(token=config.get('discord').get('token'))
 
-CONFIG_PATH = Path(config.get('server', 'cfg_path')).resolve()
-DOCKER_NAME = config.get('server', 'name')
-SERVER_IP = config.get('server', 'ip')
+OPERATOR = config.get('discord').get('operators')
+OWNER = config.get('discord').get('owners')
+
+CONFIG_PATH = Path(config.get('server').get('cfg_path')).resolve()
+DOCKER_NAME = config.get('server').get('name')
+SERVER_IP = config.get('server').get('ip')
 
 DELIMITER_FINDER = re.compile(r"([\"'])(.*?)(?<!\\)\1|(\S+)")
 DELIMITER_REMOVER = re.compile(r"\\([\"'])")
