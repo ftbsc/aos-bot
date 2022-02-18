@@ -8,17 +8,22 @@ from pathlib import Path
 from typing import Callable
 from signal import SIGINT
 
+from configparser import ConfigParser
+
 from hikari import GatewayBot
 from hikari.events import DMMessageCreateEvent
 
-bot = GatewayBot(token="discord_bot_token")
+config = ConfigParser()
+config.read('config.ini')
 
-OPERATOR = [] #Discord user IDs go here
-OWNER = [] #and here
+bot = GatewayBot(token=config.get('discord', 'token'))
 
-CONFIG_PATH = Path("Path to piqueserver/piqueserver/config").resolve()
-DOCKER_NAME = "name of the docker container running piqueserver (you must have created it already)"
-SERVER_IP = "IP of the server"
+OPERATOR = [ int(op) for op in config.get('discord', 'operators').split(' ') ]
+OWNER = [ int(ow) for ow in config.get('discord', 'owners').split(' ') ]
+
+CONFIG_PATH = Path(config.get('server', 'cfg_path')).resolve()
+DOCKER_NAME = config.get('server', 'name')
+SERVER_IP = config.get('server', 'ip')
 
 DELIMITER_FINDER = re.compile(r"([\"'])(.*?)(?<!\\)\1|(\S+)")
 DELIMITER_REMOVER = re.compile(r"\\([\"'])")
@@ -91,7 +96,7 @@ async def url_cmd(event:DMMessageCreateEvent, *args) -> None:
 @command("check", public=True)
 async def check_cmd(event:DMMessageCreateEvent, *args) -> None:
 	if event.author_id in OWNER:
-		await event.message.respond("Damn you're OG")
+		await event.message.respond("It seems you run this bot.")
 	elif event.author_id in OPERATOR:
 		await event.message.respond("Yep, you are authorized!")
 	else:
