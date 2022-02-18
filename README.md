@@ -4,4 +4,4 @@ Bot for controlling an [Ace of Spades](https://www.buildandshoot.com/) server ([
 Made by [Fraaz](https://github.com/realfraze) and [Tonio](https://github.com/tonio-cartonio) for [PoobAoS](https://aos.pooblic.org).
 
 ## Usage
-All configuration is done by editing the start of [settings.ini](https://github.com/fantabos-co/aos-bot/blob/master/settings.ini).
+All configuration is done by editing the [settings.ini](https://github.com/fantabos-co/aos-bot/blob/master/settings.ini).
