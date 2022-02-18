@@ -8,13 +8,10 @@ from pathlib import Path
 from typing import Callable
 from signal import SIGINT
 
-from configparser import ConfigParser
-
 from hikari import GatewayBot
 from hikari.events import DMMessageCreateEvent
 
-config = ConfigParser()
-config.read('config.ini')
+config = toml.load("settings.toml")
 
 bot = GatewayBot(token=config.get('discord', 'token'))
 
