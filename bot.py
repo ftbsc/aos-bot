@@ -13,8 +13,6 @@ from hikari.events import DMMessageCreateEvent
 
 config = toml.load('settings.toml')
 
-print(config)
-
 bot = GatewayBot(token=config.get('discord').get('token'))
 
 OPERATOR = config.get('discord').get('operators')
