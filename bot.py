@@ -225,4 +225,5 @@ async def server_cmd(event:DMMessageCreateEvent, *args):
 	else:
 		await event.message.respond("Invalid server command, can be " + str.join(', ', (f'`{a}`' for a in (['status'] + list(SERVER_ACTIONS.keys())))) + '.')
 
-bot.run()
+if __name__ == "__main__":
+	bot.run()
