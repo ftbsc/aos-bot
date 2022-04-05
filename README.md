@@ -1,5 +1,5 @@
 # AoS Discord Bot
-Bot for controlling an [Ace of Spades](https://www.buildandshoot.com/) server ([piqueserver](https://github.com/piqueserver/piqueserver)) through Discord, powered by [hikari](https://github.com/hikari-py/hikari).
+Bot for controlling an [Ace of Spades](https://www.buildandshoot.com/) server ([piqueserver](https://github.com/piqueserver/piqueserver)) Docker instace through Discord, powered by [hikari](https://github.com/hikari-py/hikari). It's oddly specific, but that's what we used for.
 
 Made by [Fraaz](https://github.com/realfraze) and [Tonio](https://github.com/tonio-cartonio) for [PoobAoS](https://aos.pooblic.org).
 
@@ -27,3 +27,5 @@ server unpause    -> Unpauses the server.
 server status     -> Returns the current status of the server.
 ```
 
+## Notes
+Do not give access to the bot to people you do not trust. Someone able to change configuration can potentially do very nasty things to your server. It's within Docker, so the machine itself SHOULD be safe, but better safe than sorry.
